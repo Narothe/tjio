@@ -29,6 +29,26 @@ public class StudentManager {
         return true;
     }
 
+    public boolean updateStudent(String studentId, String name, String surname) {
+        // Sprawdzenie czy student o podanym identyfikatorze istnieje
+        for (Student student : students) {
+            if (student.getStudentId().equals(studentId)) {
+                // Aktualizacja danych studenta
+                student.setName(name);
+                student.setSurname(surname);
+
+                // Zwrócenie true, aby oznaczyć sukces
+                return true;
+            }
+        }
+
+        // Zwrócenie false, aby oznaczyć porażkę
+        return false;
+    }
+
+
+
+
 
     // Metoda do uzyskiwania listy studentów
     public List<Student> getStudents() {

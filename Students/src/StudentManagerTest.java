@@ -21,14 +21,24 @@ public class StudentManagerTest {
         } else {
             System.out.println("addStudent: FAILED");
         }
+    }
 
-//        // Wyświetlenie listy studentów
-//        List<Student> students = studentManager.getStudents();
-//        System.out.println("Lista studentów:");
-//        for (Student student : students) {
-//            System.out.println("Imię: " + student.getName() + ", Nazwisko: " + student.getSurname() + ", ID: " + student.getStudentId());
-//        }
-//        System.out.println();
+    public void testUpdateStudent(String studentId, String name, String surname) {
+        // Aktualizowanie danych studenta
+        boolean result = studentManager.updateStudent(studentId, name, surname);
 
+        // Sprawdzenie czy aktualizacja zakończyła się sukcesem
+        assert result == true : "Test should get true";
+
+        if (result) {
+            System.out.println("updateStudent: SUCCES");
+        } else {
+            System.out.println("updateStudent: FAILED");
+        }
+    }
+
+
+    public List<Student> getStudents() {
+        return studentManager.getStudents();
     }
 }
