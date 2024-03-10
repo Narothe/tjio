@@ -2,6 +2,7 @@ public class Student {
     private String name;
     private String surname;
     private String studentId;
+    private Grade[] grades;
 
     // Konstruktor
     public Student(String name, String surname, String studentId) {
@@ -33,5 +34,24 @@ public class Student {
 
     public void setStudentId(String studentId) {
         this.studentId = studentId;
+    }
+
+
+    public Grade[] getGrades() {
+        return grades;
+    }
+
+    public void addGrade(Grade newGrade) {
+        if (grades == null) {
+            grades = new Grade[1];
+            grades[0] = newGrade;
+        } else {
+            Grade[] newGrades = new Grade[grades.length + 1];
+            for (int i = 0; i < grades.length; i++) {
+                newGrades[i] = grades[i];
+            }
+            newGrades[grades.length] = newGrade;
+            grades = newGrades;
+        }
     }
 }

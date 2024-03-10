@@ -11,6 +11,7 @@ public class Main {
     }
     public static void main(String[] args) {
         StudentManagerTest studentManagertest = new StudentManagerTest();
+//        GradeManagerTest gradeManagerTest = new GradeManagerTest();
 
         // Dodanie studentów
         studentManagertest.testAddStudent("Jan", "Kowalski", "1");
@@ -35,6 +36,22 @@ public class Main {
 
         // Wyświetl listę studentów
         printStudents(studentManagertest.getStudents());
+
+
+        // Dodawanie oceny określonemu studentowi z danego przedmiotu
+        studentManagertest.testAddGrade("2", "Matematyka", 4.5);
+        studentManagertest.testAddGrade("2", "Fizyka", 3.5);
+        studentManagertest.testAddGrade("3", "Matematyka", 5.0);
+        studentManagertest.testAddGrade("3", "Fizyka", 4.0);
+
+        // Wyświetl studentów wraz z ich ocenami
+        for (Student student : studentManagertest.getStudents()) {
+            System.out.println("Imię: " + student.getName() + ", Nazwisko: " + student.getSurname() + ", ID: " + student.getStudentId());
+            for (Grade grade : student.getGrades()) {
+                System.out.println("Przedmiot: " + grade.getSubject() + ", Ocena: " + grade.getGrade());
+            }
+            System.out.println();
+        }
 
     }
 }

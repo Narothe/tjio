@@ -1,12 +1,14 @@
 import java.util.List;
 
 public class StudentManagerTest {
-    // Wspólny obiekt StudentManager dla wszystkich testów
-    private StudentManager studentManager;
-
     // Konstruktor inicjalizujący StudentManager
     public StudentManagerTest() {
         this.studentManager = new StudentManager();
+    }
+    private StudentManager studentManager;
+
+    public List<Student> getStudents() {
+        return studentManager.getStudents();
     }
 
     public void testAddStudent(String name, String surname, String studentId) {
@@ -51,8 +53,17 @@ public class StudentManagerTest {
         }
     }
 
+    public void testAddGrade(String studentId, String subject, double grade) {
+        // Dodanie oceny
+        boolean result = new GradeManager().addGrade(studentId, subject, grade, getStudents());
 
-    public List<Student> getStudents() {
-        return studentManager.getStudents();
+        // Sprawdzenie czy dodanie zakończyło się sukcesem
+        assert result == true : "Test should get true";
+
+        if (result) {
+            System.out.println("addGrade: SUCCES");
+        } else {
+            System.out.println("addGrade: FAILED");
+        }
     }
 }

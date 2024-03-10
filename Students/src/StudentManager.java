@@ -10,6 +10,11 @@ public class StudentManager {
         this.students = new ArrayList<>();
     }
 
+    // Metoda do uzyskiwania listy studentów
+    public List<Student> getStudents() {
+        return students;
+    }
+
     public boolean addStudent(String name, String surname, String studentId) {
         // Sprawdzenie czy student o podanym identyfikatorze już istnieje
         for (Student student : students) {
@@ -62,12 +67,4 @@ public class StudentManager {
         return false;
     }
 
-
-
-
-
-    // Metoda do uzyskiwania listy studentów
-    public List<Student> getStudents() {
-        return students;
-    }
 }
