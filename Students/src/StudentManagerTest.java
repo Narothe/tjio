@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class StudentManagerTest {
     // Wspólny obiekt StudentManager dla wszystkich testów
     private StudentManager studentManager;
@@ -19,13 +21,14 @@ public class StudentManagerTest {
         } else {
             System.out.println("addStudent: FAILED");
         }
-/*
-        // Wyświetlenie listy studentów
-        List<Student> students = studentManager.getStudents();
-        System.out.println("Lista studentów:");
-        for (Student student : students) {
-            System.out.println("Imię: " + student.getName() + ", Nazwisko: " + student.getSurname() + ", ID: " + student.getStudentId());
-        }
-*/
+
+//        // Wyświetlenie listy studentów
+//        List<Student> students = studentManager.getStudents();
+//        System.out.println("Lista studentów:");
+//        for (Student student : students) {
+//            System.out.println("Imię: " + student.getName() + ", Nazwisko: " + student.getSurname() + ", ID: " + student.getStudentId());
+//        }
+//        System.out.println();
+
     }
 }
