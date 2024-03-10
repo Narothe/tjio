@@ -30,5 +30,11 @@ public class Main {
         printStudents(studentManagertest.getStudents());
 
 
+        // Usuwanie studenta na podstawie identyfikatora
+        studentManagertest.testDeleteStudent("1");
+
+        // Wyświetl listę studentów
+        printStudents(studentManagertest.getStudents());
+
     }
 }

@@ -46,6 +46,22 @@ public class StudentManager {
         return false;
     }
 
+    public boolean deleteStudent(String studentId) {
+        // Sprawdzenie czy student o podanym identyfikatorze istnieje
+        for (Student student : students) {
+            if (student.getStudentId().equals(studentId)) {
+                // Usunięcie studenta z listy
+                students.remove(student);
+
+                // Zwrócenie true, aby oznaczyć sukces
+                return true;
+            }
+        }
+
+        // Zwrócenie false, aby oznaczyć porażkę
+        return false;
+    }
+
 
 
 

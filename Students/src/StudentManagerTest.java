@@ -37,6 +37,20 @@ public class StudentManagerTest {
         }
     }
 
+    public void testDeleteStudent(String studentId) {
+        // Usuwanie studenta
+        boolean result = studentManager.deleteStudent(studentId);
+
+        // Sprawdzenie czy usunięcie zakończyło się sukcesem
+        assert result == true : "Test should get true";
+
+        if (result) {
+            System.out.println("deleteStudent: SUCCES");
+        } else {
+            System.out.println("deleteStudent: FAILED");
+        }
+    }
+
 
     public List<Student> getStudents() {
         return studentManager.getStudents();
