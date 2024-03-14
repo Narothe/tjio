@@ -67,4 +67,16 @@ public class StudentManager {
         return false;
     }
 
+    public double calculateAverageGrade(String number, String subject) {
+        // Sprawdzenie czy student o podanym identyfikatorze istnieje
+        for (Student student : students) {
+            if (student.getStudentId().equals(number)) {
+                // Obliczenie średniej ocen z przedmiotu
+                return student.calculateAverageGrade(subject);
+            }
+        }
+
+        // Zwrócenie 0, aby oznaczyć porażkę
+        return 0;
+    }
 }

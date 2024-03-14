@@ -40,9 +40,13 @@ public class Main {
 
         // Dodawanie oceny określonemu studentowi z danego przedmiotu
         studentManagertest.testAddGrade("2", "Matematyka", 4.5);
+        studentManagertest.testAddGrade("2", "Matematyka", 5.0);
         studentManagertest.testAddGrade("2", "Fizyka", 3.5);
+        studentManagertest.testAddGrade("2", "Fizyka", 5.0);
         studentManagertest.testAddGrade("3", "Matematyka", 5.0);
+        studentManagertest.testAddGrade("3", "Matematyka", 3.0);
         studentManagertest.testAddGrade("3", "Fizyka", 4.0);
+        studentManagertest.testAddGrade("3", "Fizyka", 5.0);
 
         // Wyświetl studentów wraz z ich ocenami
         for (Student student : studentManagertest.getStudents()) {
@@ -53,7 +57,24 @@ public class Main {
             System.out.println();
         }
 
-        
+        // Obliczanie średniej ocen z przedmiotu dla każdego studenta
+        studentManagertest.testCalculateAverageGrade("2", "Matematyka");
+        studentManagertest.testCalculateAverageGrade("2", "Fizyka");
+        studentManagertest.testCalculateAverageGrade("3", "Matematyka");
+        studentManagertest.testCalculateAverageGrade("3", "Fizyka");
+
+
+
+        for (Student student : studentManagertest.getStudents()) {
+            System.out.println("Imię: " + student.getName() + ", Nazwisko: " + student.getSurname() + ", ID: " + student.getStudentId());
+            System.out.println("Średnia ocen z Matematyki: " + student.calculateAverageGrade("Matematyka"));
+            System.out.println("Średnia ocen z Fizyki: " + student.calculateAverageGrade("Fizyka"));
+            System.out.println();
+        }
+
+
+
+
 
 
     }

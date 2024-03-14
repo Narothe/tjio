@@ -54,4 +54,18 @@ public class Student {
             grades = newGrades;
         }
     }
+    public double calculateAverageGrade(String subject) {
+        if (grades == null) {
+            return 0;
+        }
+        double sum = 0;
+        int count = 0;
+        for (Grade grade : grades) {
+            if (grade.getSubject().equals(subject)) {
+                sum += grade.getGrade();
+                count++;
+            }
+        }
+        return sum / count;
+    }
 }

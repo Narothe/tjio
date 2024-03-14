@@ -66,4 +66,20 @@ public class StudentManagerTest {
             System.out.println("addGrade: FAILED");
         }
     }
+
+
+    public void testCalculateAverageGrade(String number, String subject) {
+        // Obliczanie średniej ocen
+        double result = studentManager.calculateAverageGrade(number, subject);
+
+        // Sprawdzenie czy obliczenie zakończyło się sukcesem
+        assert result >= 0 : "Test should get true";
+
+        if (result >= 0) {
+            System.out.println("calculateAverageGrade: SUCCES");
+        } else {
+            System.out.println("calculateAverageGrade: FAILED");
+        }
+
+    }
 }
