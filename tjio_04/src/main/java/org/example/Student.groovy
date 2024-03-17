@@ -4,6 +4,8 @@ class Student {
     private String name
     private String surname
     private String studentId
+    private Grade[] grades
+
 
     // Konstruktor
     Student(String name, String surname, String studentId) {
@@ -37,20 +39,25 @@ class Student {
         this.studentId = studentId
     }
 
-    // Poniższe metody mogą być zakomentowane, jeśli nie są potrzebne w Groovy
 
-//    Grade[] getGrades() {
-//        return grades
-//    }
-//
-//    void addGrade(Grade newGrade) {
-//        if (grades == null) {
-//            grades = [newGrade]
-//        } else {
-//            grades += newGrade
-//        }
-//    }
-//
+    Grade[] getGrades() {
+        return grades
+    }
+
+    void addGrade(Grade newGrade) {
+        if (grades == null) {
+            grades = new Grade[1]
+            grades[0] = newGrade
+        } else {
+            Grade[] newGrades = new Grade[grades.length + 1]
+            for (int i = 0; i < grades.length; i++) {
+                newGrades[i] = grades[i]
+            }
+            newGrades[grades.length] = newGrade
+            grades = newGrades
+        }
+    }
+
 //    double calculateAverageGrade(String subject) {
 //        if (grades == null) {
 //            return 0

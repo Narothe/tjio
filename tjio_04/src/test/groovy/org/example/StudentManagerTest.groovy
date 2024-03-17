@@ -19,7 +19,7 @@ class StudentManagerTest extends Specification {
     }
 
     def "test update student"() {
-        println("test update student")
+        println("\ntest update student")
 
         given:
         def studentManager = new StudentManager()
@@ -34,9 +34,8 @@ class StudentManagerTest extends Specification {
         studentManager.getStudents().get(0).getSurname() == "Smith"
     }
 
-    // funkcja do usuwania studenta po id
-    def "test remove student"() {
-        println("test remove student")
+    def "test remove student by id"() {
+        println("\ntest remove student")
 
         given:
         def studentManager = new StudentManager()
@@ -49,5 +48,46 @@ class StudentManagerTest extends Specification {
         then:
         studentManager.getStudents().size() == 0
     }
+
+    def "test add grade"() {
+        println("\ntest add grade")
+
+        given:
+        def studentManager = new StudentManager()
+        def student = new Student("John", "Doe", "1")
+        studentManager.addStudent(student)
+
+        when:
+        studentManager.addGrade("1", "Math", 5.0)
+        studentManager.addGrade("1", "Math", 4.0)
+        studentManager.addGrade("1", "Physic", 4.0)
+        studentManager.addGrade("1", "Physic", 3.0)
+
+        then:
+        studentManager.getStudents().size() == 1
+        studentManager.getStudents().get(0).getGrades().size() == 4
+    }
+
+    def "test calculate average grade"() {
+        println("\ntest calculate average grade")
+
+        given:
+        def studentManager = new StudentManager()
+        def student = new Student("John", "Doe", "1")
+        studentManager.addStudent(student)
+        studentManager.addGrade("1", "Math", 5.0)
+        studentManager.addGrade("1", "Math", 4.0)
+        studentManager.addGrade("1", "Physic", 4.0)
+        studentManager.addGrade("1", "Physic", 3.0)
+
+        when:
+        def averageMath = studentManager.calculateAverageGrade("1", "Math")
+        def averagePhysic = studentManager.calculateAverageGrade("1", "Physic")
+
+        then:
+        averageMath == 4.5
+        averagePhysic == 3.5
+    }
+
 
 }
