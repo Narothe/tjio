@@ -6,7 +6,7 @@ class Student {
     private String studentId
 
     // Konstruktor
-    Student(String name, String surname, int studentId) {
+    Student(String name, String surname, String studentId) {
         this.name = name
         this.surname = surname
         this.studentId = studentId
