@@ -23,3 +23,5 @@ Students - task 3
 tjio_04 - task 4
 
 tjio05 - task 5
+
+tjio06 - task 6
