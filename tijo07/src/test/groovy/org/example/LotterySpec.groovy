@@ -20,5 +20,7 @@ class LotterySpec extends Specification {
      [1, 2, 2, 2, 3, 4, 5, 5, 1] | 2       | 2            | [1, 5]
         null                     | 1       | 0            | []
         [1, 2, 3]                | null    | 0            | []
+        null                     | null    | 0            | []
+        [1, 1, 2, 2, 2, 3, 4, 5] | 7       | 0            | []
     }
 }
