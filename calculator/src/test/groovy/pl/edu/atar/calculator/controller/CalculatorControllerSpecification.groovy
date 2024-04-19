@@ -73,7 +73,118 @@ class CalculatorControllerSpecification extends Specification {
         result.andExpect(jsonPath("result").value(2.0))
     }
 
-    @TestConfiguration
+    def "should calculate 'a' * 'b' and return 'ok' status"() {
+        given:
+        Map request = [
+                "a": 3.0,
+                "b": 2.0,
+                "operation": "*"
+        ]
+
+        and:
+        calculatorService.calculate(3.0, 2.0, "*") >> Optional.of(6.0.doubleValue())
+
+        when:
+        def result = mvc
+                .perform(post("/calculate").contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
+
+        then:
+        result.andExpect(status().isOk())
+
+        and:
+        result.andExpect(jsonPath("result").value(6.0))
+    }
+
+    def "should calculate 'a' / 'b' and return 'ok' status"() {
+        given:
+        Map request = [
+                "a": 6.0,
+                "b": 2.0,
+                "operation": "/"
+        ]
+
+        and:
+        calculatorService.calculate(6.0, 2.0, "/") >> Optional.of(3.0.doubleValue())
+
+        when:
+        def result = mvc
+                .perform(post("/calculate").contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
+
+        then:
+        result.andExpect(status().isOk())
+
+        and:
+        result.andExpect(jsonPath("result").value(3.0))
+    }
+
+    def "should calculate 'a' / '0' and return 'not ok' status"() {
+        given:
+        Map request = [
+                "a": 6.0,
+                "b": 0.0,
+                "operation": "/"
+        ]
+
+        and:
+        calculatorService.calculate(6.0, 0.0, "/") >> Optional.empty()
+
+        when:
+        def result = mvc
+                .perform(post("/calculate").contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
+
+        then:
+        result.andExpect(status().isBadRequest())
+
+        and:
+        result.andExpect(jsonPath("result").doesNotExist())
+    }
+    def "should calculate 'a' % 'b' and return 'ok' status"() {
+        given:
+        Map request = [
+                "a": 4.0,
+                "b": 3.0,
+                "operation": "%"
+        ]
+
+        and:
+        calculatorService.calculate(4.0, 3.0, "%") >> Optional.of(1.0.doubleValue())
+
+        when:
+        def result = mvc
+                .perform(post("/calculate").contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
+
+        then:
+        result.andExpect(status().isOk())
+
+        and:
+        result.andExpect(jsonPath("result").value(1.0))
+    }
+    def "negative test - should return code 400"() {
+        given:
+        Map request = [
+                "a": 4.0,
+                "b": 3.0,
+                "operation": "!"
+        ]
+
+        when:
+        def result = mvc
+                .perform(post("/calculate").contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
+
+        then:
+        result.andExpect(status().isBadRequest())
+
+        and:
+        result.andExpect(jsonPath("result").doesNotExist())
+
+    }
+
+        @TestConfiguration
     static class StubConfig {
         DetachedMockFactory detachedMockFactory = new DetachedMockFactory()
 
