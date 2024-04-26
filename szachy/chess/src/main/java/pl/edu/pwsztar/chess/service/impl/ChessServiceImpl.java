@@ -22,9 +22,9 @@ public class ChessServiceImpl implements ChessService {
                 FigureType.BISHOP, new RulesOfGame.Bishop(),
                 FigureType.KNIGHT, new RulesOfGame.Knight(),
                 FigureType.PAWN, new RulesOfGame.Pawn(),
-//                FigureType.QUEEN, new RulesOfGame.Queen(),
-//                FigureType.ROOK, new RulesOfGame.Rook(),
-                  FigureType.KING, new RulesOfGame.King()
+                FigureType.QUEEN, new RulesOfGame.Queen(),
+                FigureType.ROOK, new RulesOfGame.Rook(),
+                FigureType.KING, new RulesOfGame.King()
         );
     }
 
