@@ -84,7 +84,4 @@ public interface RulesOfGame {
                     source.x() == destination.x() || source.y() == destination.y();
         }
     }
-    // TODO: Prosze dokonczyc implementacje kolejnych figur szachowych: Knight, Queen
-    // TODO: Prosze stosowac zaproponowane nazwy klas !!!
-    // TODO: Kazda klasa powinna implementowac interfejs RulesOfGame
 }
