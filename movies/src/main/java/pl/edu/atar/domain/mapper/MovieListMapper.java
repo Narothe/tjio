@@ -8,30 +8,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class MovieListMapper {
+public class MovieListMapper implements Converter<Movie, MovieDto> {
+
+    @Override
+    public MovieDto convert(Movie movie) {
+        return new MovieDto.Builder()
+                .movieId(movie.getMovieId())
+                .title(movie.getTitle())
+                .image(movie.getImage())
+                .releaseYear(movie.getReleaseYear())
+                .build();
+    }
 
     public List<MovieDto> mapToDto(List<Movie> movies) {
         List<MovieDto> moviesDto = new ArrayList<>();
 
-//        for(Movie movie: movies) {
-//            MovieDto movieDto = new MovieDto();
-//
-//            movieDto.setMovieId(movie.getMovieId());
-//            movieDto.setTitle(movie.getTitle());
-//            movieDto.setImage(movie.getImage());
-//            movieDto.setReleaseYear(movie.getReleaseYear());
-//
-//            moviesDto.add(movieDto);
-//        }
-
-        //strumień w mapperze
         movies.stream()
-                .map(movie -> new MovieDto.Builder()
-                        .movieId(movie.getMovieId())
-                        .title(movie.getTitle())
-                        .image(movie.getImage())
-                        .releaseYear(movie.getReleaseYear())
-                        .build())
+                .map(this::convert)
                 .forEach(moviesDto::add);
 
         return moviesDto;
