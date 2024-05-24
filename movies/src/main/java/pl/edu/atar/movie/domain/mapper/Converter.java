@@ -1,4 +1,4 @@
-package pl.edu.atar.domain.mapper;
+package pl.edu.atar.movie.domain.mapper;
 
 @FunctionalInterface
 public interface Converter<S, T> {

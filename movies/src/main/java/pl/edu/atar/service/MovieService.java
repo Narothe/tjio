@@ -1,6 +1,6 @@
 package pl.edu.atar.service;
 
-import pl.edu.atar.domain.dto.*;
+import pl.edu.atar.movie.dto.*;
 
 import java.util.List;
 

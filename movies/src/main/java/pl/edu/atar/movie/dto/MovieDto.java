@@ -1,8 +1,14 @@
-package pl.edu.atar.domain.dto;
+package pl.edu.atar.movie.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.lang.module.ModuleDescriptor;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class MovieDto implements Serializable {
 
     private Long movieId;
